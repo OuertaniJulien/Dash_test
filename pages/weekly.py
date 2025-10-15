@@ -5,7 +5,7 @@ import plotly.graph_objects as go # type: ignore
 
 st.set_page_config(page_title="Weekly Report", 
                    page_icon=":calendar:",
-                     layout="centered"
+                   layout="wide"
                    
 )
 st.sidebar.title("Navigation")
