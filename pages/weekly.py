@@ -1,7 +1,7 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+import streamlit as st # pyright: ignore[reportMissingImports]
+import pandas as pd # pyright: ignore[reportMissingModuleSource]
+import plotly.express as px # pyright: ignore[reportMissingImports]
+import plotly.graph_objects as go # type: ignore
 
 st.set_page_config(page_title="Weekly Report", 
                    page_icon=":calendar:",
@@ -30,7 +30,7 @@ dt_week[['Pertes','ecart']] = dt_week[['Pertes','ecart']].fillna(0).astype(int)
 
 # st.text("Données de la semaine " + str(pd.to_datetime(dt_week["Semaine"]).dt.strftime('%U').head(1).values[0]))
 dt_week["Semaine"] = pd.to_datetime(dt_week["Semaine"],dayfirst=True).dt.strftime('%U')
-st.dataframe(dt_week[["Semaine","Produit","Pertes","ecart"]])
+st.dataframe(dt_week[["Semaine","Produit","Pertes","ecart"]].where(dt_week["Semaine"] == dt_week["Semaine"].max()).dropna(), use_container_width=True)
 
 
 
